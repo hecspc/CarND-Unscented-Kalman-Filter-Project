@@ -30,7 +30,11 @@ public:
 
   ///* predicted sigma points matrix
   MatrixXd Xsig_pred_;
-
+    
+    MatrixXd R_radar_;
+    MatrixXd R_laser_;
+    MatrixXd H_laser_;
+    
   ///* time when the state is true, in us
   long long time_us_;
 
@@ -104,6 +108,9 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+    
+    
+    void NormalizeAngle(double& phi);
 };
 
 #endif /* UKF_H */
